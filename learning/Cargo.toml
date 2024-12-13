@@ -1,0 +1,22 @@
+[package]
+name = "learning"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[package.metadata.scripts]
+optimize = """docker run --rm -v "$(pwd)":/code \
+  --mount type=volume,source="$(basename "$(pwd)")_cache",target=/target \
+  --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry \
+  cosmwasm/optimizer:0.15.0
+"""
+
+[dependencies]
+cosmwasm-schema = "2.1.0"
+cosmwasm-std = {version = "2.1.5", features = ["staking","cosmwasm_1_4"]}
+schemars = "0.8.16"
+serde = { version = "1.0.197", default-features = false, features = ["derive"] }
+cw-storage-plus = "2.0.0"
+serde-json-wasm = "1.0.1"
