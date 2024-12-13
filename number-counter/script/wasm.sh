@@ -2,7 +2,7 @@ JUNCTION="./artifacts/junctiond"
 CHAIN_ID="junction"
 KEY_NAME="okok"
 KEYRING_BACKEND="--keyring-backend test"
-WASM="artifacts/learning.wasm"
+WASM="artifacts/number_counter.wasm"
 CONTRACT_ADDRESS="air14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9snx9gzt"
 
 $JUNCTION tx wasm store $WASM \
